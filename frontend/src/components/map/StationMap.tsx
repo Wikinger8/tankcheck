@@ -26,12 +26,12 @@ export default function StationMap({ station, userLocation }: StationMapProps) {
     <MapContainer
       center={[station.lat, station.lng]}
       zoom={15}
-      className="w-full h-full"
+      className="w-full h-full z-[999]"
       scrollWheelZoom={true}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
       />
       <Marker position={[station.lat, station.lng]}>
         <Popup>{station.name}</Popup>
@@ -41,9 +41,9 @@ export default function StationMap({ station, userLocation }: StationMapProps) {
           center={[userLocation.lat, userLocation.lng]}
           radius={8}
           pathOptions={{
-            fillColor: '#2563eb',
+            fillColor: '#00e5a0',
             fillOpacity: 1,
-            color: '#ffffff',
+            color: '#0c0c0f',
             weight: 3,
           }}
         />

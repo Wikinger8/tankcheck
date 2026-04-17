@@ -21,16 +21,23 @@ export function WeeklyPatternChart({ stationId, fuelType }: WeeklyPatternChartPr
 
   return (
     <div>
-      <p className="text-sm font-semibold text-gray-900 dark:text-white mb-3">Bester Tag zum Tanken</p>
+      <p className="text-sm font-bold text-white mb-3">Bester Tag zum Tanken</p>
       <ResponsiveContainer width="100%" height={160}>
         <BarChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-          <XAxis dataKey="day" tick={{ fontSize: 11 }} stroke="#9ca3af" />
-          <YAxis tick={{ fontSize: 10 }} stroke="#9ca3af" domain={['auto', 'auto']} />
-          <Tooltip contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 10px 25px -5px rgba(0,0,0,.1)' }} />
+          <CartesianGrid strokeDasharray="3 3" stroke="#2a2a34" />
+          <XAxis dataKey="day" tick={{ fontSize: 11, fill: '#555566' }} stroke="#2a2a34" />
+          <YAxis tick={{ fontSize: 10, fill: '#555566' }} stroke="#2a2a34" domain={['auto', 'auto']} />
+          <Tooltip
+            contentStyle={{
+              borderRadius: '8px',
+              border: '1px solid #2a2a34',
+              backgroundColor: '#141418',
+              color: '#e8e8ec',
+            }}
+          />
           <Bar dataKey="avgPrice" radius={[6, 6, 0, 0]} name="Ø Preis">
             {data.map((_, i) => (
-              <Cell key={i} fill={i === minIdx ? '#10b981' : '#3b82f6'} fillOpacity={i === minIdx ? 1 : 0.6} />
+              <Cell key={i} fill={i === minIdx ? '#00e5a0' : '#555566'} fillOpacity={i === minIdx ? 1 : 0.6} />
             ))}
           </Bar>
         </BarChart>

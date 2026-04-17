@@ -18,7 +18,7 @@ export default function FavoritesList({ favorites, prices, onRemove }: Favorites
   if (favorites.length === 0) return null;
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-2">
       {favorites.map((fav) => {
         const stationPrices = prices[fav.stationId];
         return (
@@ -27,27 +27,27 @@ export default function FavoritesList({ favorites, prices, onRemove }: Favorites
             href={`/station/${fav.stationId}`}
             className="block"
           >
-            <div className="rounded-2xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border border-white/20 dark:border-gray-700/30 shadow-lg shadow-black/5 dark:shadow-black/20 p-4 flex items-center justify-between hover:shadow-xl transition-all duration-300">
+            <div className="rounded-xl bg-[#141418] border border-[#2a2a34] p-4 flex items-center justify-between active:bg-[#1c1c22] transition-all">
               <div className="flex-1 min-w-0">
-                <p className="font-bold text-gray-900 dark:text-white truncate">{fav.brand}</p>
-                <p className="text-sm text-gray-600 dark:text-gray-400 truncate">{fav.name}</p>
-                <p className="text-xs text-gray-500 dark:text-gray-500 truncate">
+                <p className="font-bold text-white truncate">{fav.brand}</p>
+                <p className="text-sm text-[#8888a0] truncate">{fav.name}</p>
+                <p className="text-xs text-[#555566] truncate">
                   {fav.street} {fav.houseNumber}, {fav.postCode} {fav.place}
                 </p>
                 {stationPrices && (
-                  <div className="flex gap-3 mt-2">
+                  <div className="flex gap-2 mt-2">
                     {stationPrices.e5 !== false && (
-                      <span className="text-xs bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-2 py-0.5 rounded-full">
+                      <span className="text-xs bg-[#1c1c22] border border-[#2a2a34] text-[#60a5fa] px-2 py-0.5 rounded-lg font-bold tabular-nums">
                         E5: {formatPrice(stationPrices.e5)}
                       </span>
                     )}
                     {stationPrices.e10 !== false && (
-                      <span className="text-xs bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-300 px-2 py-0.5 rounded-full">
+                      <span className="text-xs bg-[#1c1c22] border border-[#2a2a34] text-[#00e5a0] px-2 py-0.5 rounded-lg font-bold tabular-nums">
                         E10: {formatPrice(stationPrices.e10)}
                       </span>
                     )}
                     {stationPrices.diesel !== false && (
-                      <span className="text-xs bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 px-2 py-0.5 rounded-full">
+                      <span className="text-xs bg-[#1c1c22] border border-[#2a2a34] text-[#fbbf24] px-2 py-0.5 rounded-lg font-bold tabular-nums">
                         Diesel: {formatPrice(stationPrices.diesel)}
                       </span>
                     )}
@@ -60,7 +60,7 @@ export default function FavoritesList({ favorites, prices, onRemove }: Favorites
                   e.stopPropagation();
                   onRemove(fav.stationId);
                 }}
-                className="ml-3 flex-shrink-0 p-2 text-gray-400 dark:text-gray-500 hover:text-red-500 dark:hover:text-red-400 transition-colors"
+                className="ml-3 flex-shrink-0 p-2 text-[#555566] hover:text-[#ef4444] transition-colors"
                 aria-label={`${fav.name} aus Favoriten entfernen`}
               >
                 <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

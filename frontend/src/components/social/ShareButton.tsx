@@ -37,11 +37,11 @@ export function ShareButton({ stationName, brand, place, prices }: ShareButtonPr
   return (
     <button
       onClick={handleShare}
-      className="flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border border-white/20 dark:border-gray-700/30 rounded-xl shadow-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:shadow-xl transition-all duration-300"
+      className="flex items-center gap-2 px-3 py-2 bg-[#1c1c22] border border-[#2a2a34] rounded-lg text-sm font-bold text-[#8888a0] hover:text-[#00e5a0] hover:border-[#00e5a0]/30 transition-all"
     >
       {copied ? (
         <>
-          <svg className="w-4 h-4 text-emerald-500" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+          <svg className="w-4 h-4 text-[#00e5a0]" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
           </svg>
           Kopiert!

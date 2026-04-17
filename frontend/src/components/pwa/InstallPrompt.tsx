@@ -55,10 +55,10 @@ export default function InstallPrompt() {
 
   return (
     <div className="fixed bottom-0 inset-x-0 z-50 p-4 pb-safe">
-      <div className="mx-auto max-w-lg rounded-2xl bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl border border-white/20 dark:border-gray-700/30 shadow-xl p-4">
+      <div className="mx-auto max-w-lg rounded-xl bg-[#141418] border border-[#2a2a34] p-4">
         <div className="flex items-center gap-3">
-          <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-blue-600 flex items-center justify-center">
-            <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-[#00e5a0] flex items-center justify-center">
+            <svg className="h-6 w-6 text-[#0c0c0f]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -67,10 +67,10 @@ export default function InstallPrompt() {
             </svg>
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-gray-900 dark:text-white">
-              TankCheck zum Startbildschirm hinzuf&uuml;gen
+            <p className="text-sm font-bold text-white">
+              TankCheck zum Startbildschirm hinzufügen
             </p>
-            <p className="text-xs text-gray-500 dark:text-gray-400">
+            <p className="text-xs text-[#555566]">
               Schneller Zugriff auf Tankpreise
             </p>
           </div>
@@ -78,13 +78,13 @@ export default function InstallPrompt() {
         <div className="flex gap-2 mt-3">
           <button
             onClick={handleDismiss}
-            className="flex-1 rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+            className="flex-1 rounded-lg border border-[#2a2a34] bg-[#1c1c22] px-3 py-2 text-sm font-bold text-[#8888a0] hover:bg-[#24242c] transition-colors"
           >
             Nicht jetzt
           </button>
           <button
             onClick={handleInstall}
-            className="flex-1 rounded-lg bg-blue-600 px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 transition-colors"
+            className="flex-1 rounded-lg bg-[#00e5a0] px-3 py-2 text-sm font-bold text-[#0c0c0f] hover:bg-[#00cc8e] transition-colors"
           >
             Installieren
           </button>

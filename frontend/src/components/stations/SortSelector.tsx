@@ -11,14 +11,14 @@ const sortOptions: SortOption[] = [SortOption.PRICE, SortOption.DISTANCE];
 
 export function SortSelector({ value, onChange }: SortSelectorProps) {
   return (
-    <div className="flex rounded-lg bg-gray-100 p-1">
+    <div className="flex rounded-lg bg-[#1c1c22] border border-[#2a2a34] p-0.5 gap-0.5">
       {sortOptions.map((option) => (
         <button
           key={option}
-          className={`flex-1 rounded-md py-2 px-3 text-sm font-medium transition-colors ${
+          className={`flex-1 rounded-md py-2 px-3 text-sm font-bold transition-all ${
             value === option
-              ? 'bg-blue-600 text-white shadow-sm'
-              : 'text-gray-600 hover:text-gray-800'
+              ? 'bg-[#00e5a0] text-[#0c0c0f]'
+              : 'text-[#555566] hover:text-[#8888a0]'
           }`}
           onClick={() => onChange(option)}
         >

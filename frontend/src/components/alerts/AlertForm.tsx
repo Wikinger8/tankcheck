@@ -34,7 +34,7 @@ export default function AlertForm({
 
     const value = parseFloat(threshold);
     if (isNaN(value) || value <= 0 || value >= 5) {
-      setError('Bitte geben Sie einen g\u00fcltigen Preis zwischen 0 und 5 Euro ein.');
+      setError('Bitte geben Sie einen gültigen Preis zwischen 0 und 5 Euro ein.');
       return;
     }
 
@@ -51,24 +51,24 @@ export default function AlertForm({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/40">
-      <div className="w-full max-w-lg bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl rounded-t-2xl p-6 shadow-xl border-t border-white/20 dark:border-gray-700/30 animate-slide-up">
-        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">Preisalarm erstellen</h3>
-        <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
-          {stationBrand} &mdash; {stationName}
+    <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/60">
+      <div className="w-full max-w-lg bg-[#141418] border-t border-[#2a2a34] rounded-t-2xl p-6 animate-slide-up">
+        <h3 className="text-lg font-bold text-white mb-1">Preisalarm erstellen</h3>
+        <p className="text-sm text-[#555566] mb-4">
+          {stationBrand} — {stationName}
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <fieldset>
-            <legend className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Kraftstoffart</legend>
-            <div className="flex gap-2">
+            <legend className="text-sm font-medium text-[#8888a0] mb-2">Kraftstoffart</legend>
+            <div className="flex gap-1.5">
               {FUEL_OPTIONS.map((ft) => (
                 <label
                   key={ft}
-                  className={`flex-1 text-center cursor-pointer rounded-lg border-2 px-3 py-2 text-sm font-medium transition-all duration-300 ${
+                  className={`flex-1 text-center cursor-pointer rounded-lg px-3 py-2.5 text-sm font-bold transition-all ${
                     fuelType === ft
-                      ? 'border-blue-600 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300'
-                      : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:border-gray-300 dark:hover:border-gray-600'
+                      ? 'bg-[#00e5a0] text-[#0c0c0f]'
+                      : 'bg-[#1c1c22] border border-[#2a2a34] text-[#555566]'
                   }`}
                 >
                   <input
@@ -86,7 +86,7 @@ export default function AlertForm({
           </fieldset>
 
           <div>
-            <label htmlFor="threshold" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label htmlFor="threshold" className="block text-sm font-medium text-[#8888a0] mb-1">
               Preisgrenze (EUR/Liter)
             </label>
             <input
@@ -98,22 +98,22 @@ export default function AlertForm({
               placeholder="z.B. 1.500"
               value={threshold}
               onChange={(e) => setThreshold(e.target.value)}
-              className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-4 py-2.5 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
+              className="w-full rounded-lg border border-[#2a2a34] bg-[#1c1c22] px-4 py-2.5 text-white placeholder:text-[#555566] focus:border-[#00e5a0] focus:ring-2 focus:ring-[#00e5a0]/20 focus:outline-none"
             />
-            {error && <p className="mt-1 text-sm text-red-600 dark:text-red-400">{error}</p>}
+            {error && <p className="mt-1 text-sm text-[#ef4444]">{error}</p>}
           </div>
 
           <div className="flex gap-3 pt-2">
             <button
               type="button"
               onClick={onCancel}
-              className="flex-1 rounded-lg border border-gray-300 dark:border-gray-600 px-4 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+              className="flex-1 rounded-lg border border-[#2a2a34] bg-[#1c1c22] px-4 py-2.5 text-sm font-bold text-[#8888a0] hover:bg-[#24242c] transition-colors"
             >
               Abbrechen
             </button>
             <button
               type="submit"
-              className="flex-1 rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-blue-700 transition-colors"
+              className="flex-1 rounded-lg bg-[#00e5a0] px-4 py-2.5 text-sm font-bold text-[#0c0c0f] hover:bg-[#00cc8e] transition-colors"
             >
               Alarm erstellen
             </button>

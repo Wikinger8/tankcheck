@@ -29,19 +29,19 @@ export default function MorePage() {
   const { t } = useLanguage();
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 pb-24">
+    <div className="min-h-screen bg-[#0c0c0f] pb-24">
       <div className="mx-auto max-w-lg px-4 pt-6">
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{t('more.title')}</h1>
+        <h1 className="text-2xl font-bold text-white mb-6">{t('more.title')}</h1>
 
         <div className="space-y-2">
           {links.map((link) => (
             <Link key={link.href} href={link.href}>
-              <div className="flex items-center gap-4 rounded-2xl bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 p-4 active:bg-gray-50 dark:active:bg-gray-800 transition-colors">
-                <div className="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950 flex items-center justify-center text-blue-600 dark:text-blue-400">
+              <div className="flex items-center gap-4 rounded-xl bg-[#141418] border border-[#2a2a34] p-4 active:bg-[#1c1c22] transition-colors">
+                <div className="w-10 h-10 rounded-xl bg-[#1c1c22] border border-[#2a2a34] flex items-center justify-center text-[#00e5a0]">
                   {link.icon}
                 </div>
-                <span className="flex-1 font-semibold text-gray-900 dark:text-white">{t(link.key)}</span>
-                <svg className="w-5 h-5 text-gray-300 dark:text-gray-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                <span className="flex-1 font-semibold text-white">{t(link.key)}</span>
+                <svg className="w-4 h-4 text-[#555566]" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                 </svg>
               </div>
@@ -50,8 +50,8 @@ export default function MorePage() {
         </div>
 
         <div className="mt-8 px-1">
-          <p className="text-sm text-gray-400 dark:text-gray-500">TankCheck v1.0.0</p>
-          <p className="text-xs text-gray-300 dark:text-gray-600 mt-1">Preisdaten: tankerkoenig.de (CC BY 4.0)</p>
+          <p className="text-sm text-[#555566]">TankCheck v1.0.0</p>
+          <p className="text-xs text-[#3a3a48] mt-1">Preisdaten: tankerkoenig.de (CC BY 4.0)</p>
         </div>
       </div>
     </div>

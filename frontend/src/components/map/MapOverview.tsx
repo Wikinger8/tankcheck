@@ -95,9 +95,9 @@ function LocateButton({ lat, lng }: { lat: number; lng: number }) {
   return (
     <button
       onClick={() => map.flyTo([lat, lng], 13)}
-      className="absolute bottom-24 right-3 z-[999] bg-white dark:bg-gray-900 rounded-xl p-3 shadow-lg border border-gray-200 dark:border-gray-700 transition-transform active:scale-95"
+      className="absolute bottom-24 right-3 z-[999] bg-[#141418] rounded-xl p-3 border border-[#2a2a34] transition-transform active:scale-95"
     >
-      <svg className="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+      <svg className="w-5 h-5 text-[#00e5a0]" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
         <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
       </svg>

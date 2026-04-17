@@ -43,14 +43,14 @@ export default function AlertsPage() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-50 dark:bg-gray-950 pb-24">
+    <main className="min-h-screen bg-[#0c0c0f] pb-24">
       <div className="mx-auto max-w-lg px-4 pt-6">
         <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{t('alerts.title')}</h1>
+          <h1 className="text-2xl font-bold text-white">{t('alerts.title')}</h1>
           {favorites.length > 0 && (
             <button
               onClick={handleOpenForm}
-              className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 transition-colors"
+              className="rounded-lg bg-[#00e5a0] px-4 py-2 text-sm font-bold text-[#0c0c0f] hover:bg-[#00cc8e] transition-colors"
             >
               {t('alerts.new')}
             </button>
@@ -59,14 +59,14 @@ export default function AlertsPage() {
 
         {showForm && favorites.length > 0 && (
           <div className="mb-4">
-            <label htmlFor="station-picker" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-              Tankstelle ausw&auml;hlen
+            <label htmlFor="station-picker" className="block text-sm font-medium text-[#8888a0] mb-1">
+              Tankstelle auswählen
             </label>
             <select
               id="station-picker"
               value={selectedStationId}
               onChange={(e) => setSelectedStationId(e.target.value)}
-              className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
+              className="w-full rounded-lg border border-[#2a2a34] bg-[#1c1c22] px-3 py-2 text-white focus:border-[#00e5a0] focus:ring-2 focus:ring-[#00e5a0]/20 focus:outline-none"
             >
               {favorites.map((fav) => (
                 <option key={fav.stationId} value={fav.stationId}>
@@ -99,29 +99,17 @@ export default function AlertsPage() {
         )}
 
         {alerts.length === 0 && (
-          <div className="flex flex-col items-center justify-center py-16 text-center">
-            <svg
-              className="h-16 w-16 text-gray-300 dark:text-gray-600 mb-4"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={1}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
-              />
-            </svg>
-            <h2 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2">
-              {t('alerts.empty')}
-            </h2>
-            <p className="text-sm text-gray-500 dark:text-gray-400 max-w-xs">
-              {t('alerts.emptyDesc')}
-            </p>
+          <div className="flex flex-col items-center justify-center py-20 text-center">
+            <div className="w-20 h-20 rounded-2xl bg-[#141418] border border-[#2a2a34] flex items-center justify-center mb-5">
+              <svg className="h-10 w-10 text-[#555566]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+              </svg>
+            </div>
+            <h2 className="text-lg font-bold text-white mb-1">{t('alerts.empty')}</h2>
+            <p className="text-sm text-[#555566] max-w-[260px]">{t('alerts.emptyDesc')}</p>
             {favorites.length === 0 && (
-              <p className="text-xs text-gray-400 dark:text-gray-500 mt-3 max-w-xs">
-                F&uuml;gen Sie zuerst Tankstellen zu Ihren Favoriten hinzu, um Alarme erstellen zu k&ouml;nnen.
+              <p className="text-xs text-[#3a3a48] mt-3 max-w-[260px]">
+                Fügen Sie zuerst Tankstellen zu Ihren Favoriten hinzu, um Alarme erstellen zu können.
               </p>
             )}
           </div>

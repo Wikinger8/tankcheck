@@ -10,9 +10,9 @@ interface ToastProps {
 }
 
 const colorMap = {
-  success: 'bg-green-600',
-  warning: 'bg-amber-500',
-  info: 'bg-blue-600',
+  success: 'bg-[#00e5a0] text-[#0c0c0f]',
+  warning: 'bg-[#fbbf24] text-[#0c0c0f]',
+  info: 'bg-[#60a5fa] text-[#0c0c0f]',
 };
 
 export default function Toast({ message, type, isVisible, onClose }: ToastProps) {
@@ -20,7 +20,6 @@ export default function Toast({ message, type, isVisible, onClose }: ToastProps)
 
   useEffect(() => {
     if (isVisible) {
-      // Trigger animation
       requestAnimationFrame(() => setShow(true));
 
       const timer = setTimeout(() => {
@@ -43,16 +42,16 @@ export default function Toast({ message, type, isVisible, onClose }: ToastProps)
       }`}
     >
       <div
-        className={`${colorMap[type]} rounded-lg px-4 py-3 text-white shadow-lg max-w-[90vw]`}
+        className={`${colorMap[type]} rounded-lg px-4 py-3 shadow-lg max-w-[90vw]`}
       >
         <div className="flex items-center gap-2">
-          <span className="text-sm font-medium">{message}</span>
+          <span className="text-sm font-bold">{message}</span>
           <button
             onClick={() => {
               setShow(false);
               setTimeout(onClose, 300);
             }}
-            className="ml-2 text-white/80 hover:text-white"
+            className="ml-2 opacity-80 hover:opacity-100"
             aria-label="Schließen"
           >
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -65,7 +64,6 @@ export default function Toast({ message, type, isVisible, onClose }: ToastProps)
   );
 }
 
-// Toast manager hook for convenience
 export function useToast() {
   const [toast, setToast] = useState<{
     message: string;

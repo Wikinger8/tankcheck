@@ -47,7 +47,7 @@ export function CitySearch({ onLocationSelect }: CitySearchProps) {
     <div ref={containerRef} className="relative">
       <div className="relative">
         <svg
-          className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 dark:text-gray-500"
+          className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#555566]"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth={2}
@@ -60,12 +60,12 @@ export function CitySearch({ onLocationSelect }: CitySearchProps) {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Stadt suchen..."
-          className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border border-white/20 dark:border-gray-700/30 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all"
+          className="w-full pl-10 pr-4 py-2.5 rounded-lg bg-[#1c1c22] border border-[#2a2a34] text-white placeholder:text-[#555566] focus:outline-none focus:ring-2 focus:ring-[#00e5a0]/20 focus:border-[#00e5a0] transition-all"
         />
       </div>
 
       {open && results.length > 0 && (
-        <div className="absolute z-30 mt-1 w-full rounded-xl bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl border border-white/20 dark:border-gray-700/30 shadow-xl overflow-hidden">
+        <div className="absolute z-30 mt-1 w-full rounded-lg bg-[#141418] border border-[#2a2a34] overflow-hidden">
           {results.map((result, i) => (
             <button
               key={i}
@@ -74,7 +74,7 @@ export function CitySearch({ onLocationSelect }: CitySearchProps) {
                 setQuery(result.display_name.split(',')[0]);
                 setOpen(false);
               }}
-              className="w-full text-left px-4 py-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100/80 dark:hover:bg-gray-800/80 transition-colors border-b border-gray-100 dark:border-gray-800 last:border-0"
+              className="w-full text-left px-4 py-3 text-sm text-[#8888a0] hover:bg-[#1c1c22] transition-colors border-b border-[#2a2a34] last:border-0"
             >
               <span className="line-clamp-1">{result.display_name}</span>
             </button>

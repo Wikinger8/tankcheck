@@ -13,13 +13,13 @@ export function BrandFilter({ brands, selected, onChange }: BrandFilterProps) {
   const allSelected = selected.length === 0;
 
   return (
-    <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-none">
+    <div className="flex gap-1.5 overflow-x-auto pb-1 scrollbar-none">
       <button
         onClick={() => onChange([])}
-        className={`flex-shrink-0 px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-300 ${
+        className={`flex-shrink-0 px-3 py-1.5 rounded-lg text-sm font-bold transition-all ${
           allSelected
-            ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md'
-            : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400'
+            ? 'bg-[#00e5a0] text-[#0c0c0f]'
+            : 'bg-[#1c1c22] text-[#555566] border border-[#2a2a34]'
         }`}
       >
         {t('filter.all')}
@@ -36,10 +36,10 @@ export function BrandFilter({ brands, selected, onChange }: BrandFilterProps) {
                 onChange([...selected, brand]);
               }
             }}
-            className={`flex-shrink-0 px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-300 ${
+            className={`flex-shrink-0 px-3 py-1.5 rounded-lg text-sm font-bold transition-all ${
               isActive
-                ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md'
-                : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400'
+                ? 'bg-[#00e5a0] text-[#0c0c0f]'
+                : 'bg-[#1c1c22] text-[#555566] border border-[#2a2a34]'
             }`}
           >
             {brand}

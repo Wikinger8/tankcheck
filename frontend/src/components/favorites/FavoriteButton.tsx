@@ -23,7 +23,7 @@ export default function FavoriteButton({ station }: FavoriteButtonProps) {
     >
       {favorited ? (
         <svg
-          className="h-6 w-6 text-red-500"
+          className="h-6 w-6 text-[#ef4444]"
           viewBox="0 0 24 24"
           fill="currentColor"
         >
@@ -31,7 +31,7 @@ export default function FavoriteButton({ station }: FavoriteButtonProps) {
         </svg>
       ) : (
         <svg
-          className="h-6 w-6 text-gray-400"
+          className="h-6 w-6 text-[#555566]"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"

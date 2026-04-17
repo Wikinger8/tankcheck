@@ -11,15 +11,15 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variantClasses: Record<ButtonVariant, string> = {
-  primary: 'bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800 shadow-sm shadow-blue-600/20',
-  secondary: 'bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600',
-  ghost: 'bg-transparent text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 active:bg-gray-200 dark:active:bg-gray-700',
+  primary: 'bg-[#00e5a0] text-[#0c0c0f] hover:bg-[#00cc8e] active:bg-[#00b37d] font-bold',
+  secondary: 'bg-[#1c1c22] text-white border border-[#2a2a34] hover:bg-[#24242c] active:bg-[#2a2a34]',
+  ghost: 'bg-transparent text-[#8888a0] hover:bg-[#1c1c22] active:bg-[#24242c]',
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
-  sm: 'px-3.5 py-2 text-sm rounded-xl min-h-[36px]',
-  md: 'px-5 py-2.5 text-sm rounded-xl min-h-[44px]',
-  lg: 'px-6 py-3 text-base rounded-2xl min-h-[50px]',
+  sm: 'px-3.5 py-2 text-sm rounded-lg min-h-[36px]',
+  md: 'px-5 py-2.5 text-sm rounded-lg min-h-[44px]',
+  lg: 'px-6 py-3 text-base rounded-xl min-h-[50px]',
 };
 
 export function Button({

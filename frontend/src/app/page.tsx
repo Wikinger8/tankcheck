@@ -14,7 +14,7 @@ import { formatDistance } from '@/lib/distance';
 
 const MapOverview = dynamic(() => import('@/components/map/MapOverview'), {
   ssr: false,
-  loading: () => <div className="w-full h-full bg-gray-100 dark:bg-gray-900 animate-pulse" />,
+  loading: () => <div className="w-full h-full bg-[#141418] animate-pulse" />,
 });
 
 function CheapestHero({ stations, fuelKey }: { stations: any[]; fuelKey: 'e5' | 'e10' | 'diesel' }) {
@@ -30,21 +30,24 @@ function CheapestHero({ stations, fuelKey }: { stations: any[]; fuelKey: 'e5' | 
 
   return (
     <Link href={`/station/${cheapest.id}`}>
-      <div className="mx-3 mt-2 rounded-2xl bg-gradient-to-br from-emerald-500 to-emerald-600 p-4 shadow-lg shadow-emerald-500/20 active:scale-[0.98] transition-transform">
+      <div className="mx-3 mt-2 rounded-xl bg-[#141418] border border-[#00e5a0]/30 p-3.5 shadow-lg shadow-[#00e5a0]/5 active:scale-[0.98] transition-transform">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3 min-w-0">
-            <div className="bg-white/20 rounded-xl p-1.5">
-              <BrandIcon brand={cheapest.brand} size={32} />
-            </div>
+            <BrandIcon brand={cheapest.brand} size={36} />
             <div className="min-w-0">
-              <p className="text-emerald-50 text-[11px] font-semibold uppercase tracking-wider">Günstigste in der Nähe</p>
-              <p className="text-white font-bold text-base truncate">{cheapest.brand}</p>
-              <p className="text-emerald-100 text-xs truncate">{cheapest.street} {cheapest.houseNumber} · {typeof cheapest.dist === 'number' ? formatDistance(cheapest.dist) : cheapest.place}</p>
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] font-bold text-[#00e5a0] uppercase tracking-widest">Bestpreis</span>
+                {typeof cheapest.dist === 'number' && (
+                  <span className="text-[10px] text-[#555566]">{formatDistance(cheapest.dist)}</span>
+                )}
+              </div>
+              <p className="text-white font-bold text-sm truncate">{cheapest.brand}</p>
+              <p className="text-[#555566] text-xs truncate">{cheapest.street} {cheapest.houseNumber}, {cheapest.place}</p>
             </div>
           </div>
           <div className="text-right shrink-0 pl-3">
-            <p className="text-white text-3xl font-extrabold tabular-nums tracking-tight">{price.toFixed(3)}</p>
-            <p className="text-emerald-100 text-xs font-semibold">€/Liter</p>
+            <p className="text-[#00e5a0] text-2xl font-extrabold tabular-nums tracking-tight">{price.toFixed(3)}</p>
+            <p className="text-[#555566] text-[10px] font-bold uppercase">€/Liter</p>
           </div>
         </div>
       </div>
@@ -69,7 +72,7 @@ export default function HomePage() {
 
   if (!isConsented) {
     return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
+      <div className="min-h-screen bg-[#0c0c0f]">
         <GeolocationConsent isOpen={true} onRequestLocation={requestLocation} onManualEntry={() => {}} />
       </div>
     );
@@ -77,19 +80,19 @@ export default function HomePage() {
 
   if (geoLoading || !latitude || !longitude) {
     return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-950 flex items-center justify-center">
+      <div className="min-h-screen bg-[#0c0c0f] flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-10 w-10 border-2 border-blue-600 border-t-transparent mx-auto mb-4" />
-          <p className="text-gray-500 dark:text-gray-400 text-sm">Standort wird ermittelt...</p>
+          <div className="w-10 h-10 border-2 border-[#00e5a0] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-[#555566] text-sm">Standort wird ermittelt...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="fixed inset-0 pb-14 flex flex-col" style={{ paddingBottom: 'calc(56px + var(--safe-bottom))' }}>
-      <div className="absolute top-0 left-0 right-0 z-[999] pt-2 px-3 space-y-0">
-        <div className="bg-white/95 dark:bg-gray-950/95 backdrop-blur-lg rounded-2xl shadow-lg shadow-black/5 border border-gray-200/50 dark:border-gray-800 p-2.5">
+    <div className="fixed inset-0 flex flex-col" style={{ paddingBottom: 'calc(56px + var(--safe-bottom))' }}>
+      <div className="absolute top-0 left-0 right-0 z-[999] pt-2 space-y-0">
+        <div className="mx-3 bg-[#0c0c0f]/90 backdrop-blur-sm rounded-xl border border-[#2a2a34] p-2.5">
           <FuelTypeSelector value={fuelType} onChange={setFuelType} />
         </div>
         {!loading && stations.length > 0 && (
@@ -98,16 +101,11 @@ export default function HomePage() {
       </div>
       <div className="flex-1">
         {loading ? (
-          <div className="w-full h-full bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
-            <div className="animate-spin rounded-full h-10 w-10 border-2 border-blue-600 border-t-transparent" />
+          <div className="w-full h-full bg-[#141418] flex items-center justify-center">
+            <div className="w-10 h-10 border-2 border-[#00e5a0] border-t-transparent rounded-full animate-spin" />
           </div>
         ) : (
-          <MapOverview
-            stations={stations}
-            userLat={latitude}
-            userLng={longitude}
-            selectedFuel={fuelType}
-          />
+          <MapOverview stations={stations} userLat={latitude} userLng={longitude} selectedFuel={fuelType} />
         )}
       </div>
     </div>

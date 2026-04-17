@@ -40,9 +40,9 @@ export function ThemeToggle() {
   const activeIndex = options.findIndex((o) => o.value === theme);
 
   return (
-    <div className="relative flex rounded-xl bg-gray-100 dark:bg-gray-800 p-1">
+    <div className="relative flex rounded-lg bg-[#1c1c22] border border-[#2a2a34] p-0.5">
       <div
-        className="absolute top-1 bottom-1 rounded-lg bg-white dark:bg-gray-700 shadow-sm transition-all duration-300"
+        className="absolute top-0.5 bottom-0.5 rounded-md bg-[#00e5a0] transition-all duration-300"
         style={{
           width: `calc(${100 / options.length}% - 4px)`,
           left: `calc(${(activeIndex * 100) / options.length}% + 2px)`,
@@ -52,10 +52,10 @@ export function ThemeToggle() {
         <button
           key={option.value}
           onClick={() => setTheme(option.value)}
-          className={`relative z-10 flex-1 flex items-center justify-center gap-1.5 py-2 text-sm font-medium rounded-lg transition-colors duration-300 ${
+          className={`relative z-10 flex-1 flex items-center justify-center gap-1.5 py-2 text-sm font-bold rounded-md transition-colors duration-300 ${
             theme === option.value
-              ? 'text-gray-900 dark:text-white'
-              : 'text-gray-500 dark:text-gray-400'
+              ? 'text-[#0c0c0f]'
+              : 'text-[#555566]'
           }`}
         >
           {option.icon}

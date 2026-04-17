@@ -11,8 +11,8 @@ export function PriceDisplay({ price, fuelType, colorClass = '' }: PriceDisplayP
   if (price === false) {
     return (
       <div className="text-right">
-        <span className="text-2xl font-bold text-gray-400 dark:text-gray-500">&mdash;</span>
-        <p className="text-xs text-gray-500 dark:text-gray-400">{FUEL_TYPE_LABELS[fuelType]}</p>
+        <span className="text-2xl font-bold text-[#555566]">&mdash;</span>
+        <p className="text-xs text-[#555566]">{FUEL_TYPE_LABELS[fuelType]}</p>
       </div>
     );
   }
@@ -23,11 +23,11 @@ export function PriceDisplay({ price, fuelType, colorClass = '' }: PriceDisplayP
 
   return (
     <div className="text-right">
-      <span className={`text-2xl font-bold ${colorClass || 'text-gray-900 dark:text-white'}`}>
+      <span className={`text-2xl font-bold ${colorClass || 'text-white'}`}>
         {mainPart}
         <sup className="text-sm">{lastDigit}</sup>
       </span>
-      <p className="text-xs text-gray-500 dark:text-gray-400">{FUEL_TYPE_LABELS[fuelType]}</p>
+      <p className="text-xs text-[#555566]">{FUEL_TYPE_LABELS[fuelType]}</p>
     </div>
   );
 }

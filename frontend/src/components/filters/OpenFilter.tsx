@@ -13,15 +13,15 @@ export function OpenFilter({ value, onChange }: OpenFilterProps) {
   return (
     <button
       onClick={() => onChange(!value)}
-      className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-300 ${
+      className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-bold transition-all ${
         value
-          ? 'bg-gradient-to-r from-emerald-500 to-emerald-600 text-white shadow-md'
-          : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400'
+          ? 'bg-[#00e5a0] text-[#0c0c0f]'
+          : 'bg-[#1c1c22] text-[#555566] border border-[#2a2a34]'
       }`}
     >
       <div
         className={`w-3 h-3 rounded-full transition-colors ${
-          value ? 'bg-white' : 'bg-gray-400 dark:bg-gray-500'
+          value ? 'bg-[#0c0c0f]' : 'bg-[#555566]'
         }`}
       />
       {t('filter.openOnly')}

@@ -18,7 +18,7 @@ import FavoriteButton from '@/components/favorites/FavoriteButton';
 
 const StationMap = dynamic(() => import('@/components/map/StationMap'), {
   ssr: false,
-  loading: () => <div className="w-full h-[50vh] bg-gray-200 dark:bg-gray-800 animate-pulse" />,
+  loading: () => <div className="w-full h-[50vh] bg-[#141418] animate-pulse" />,
 });
 
 export default function StationDetailPage() {
@@ -31,20 +31,20 @@ export default function StationDetailPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
-        <header className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-white/20 dark:border-gray-700/30 px-4 py-4 flex items-center gap-3">
-          <button onClick={() => router.back()} className="text-gray-600 dark:text-gray-400">
+      <div className="min-h-screen bg-[#0c0c0f]">
+        <header className="bg-[#0c0c0f]/95 backdrop-blur-sm border-b border-[#2a2a34] px-4 py-4 flex items-center gap-3">
+          <button onClick={() => router.back()} className="text-[#555566]">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
             </svg>
           </button>
-          <div className="h-6 w-48 bg-gray-200 dark:bg-gray-700 rounded animate-pulse" />
+          <div className="h-6 w-48 bg-[#1c1c22] rounded animate-pulse" />
         </header>
-        <div className="w-full h-[50vh] bg-gray-200 dark:bg-gray-800 animate-pulse" />
+        <div className="w-full h-[50vh] bg-[#141418] animate-pulse" />
         <div className="px-4 py-4 space-y-4">
           <div className="flex gap-3">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="flex-1 h-24 bg-gray-200 dark:bg-gray-700 rounded-xl animate-pulse" />
+              <div key={i} className="flex-1 h-24 bg-[#141418] border border-[#2a2a34] rounded-xl animate-pulse" />
             ))}
           </div>
         </div>
@@ -54,19 +54,19 @@ export default function StationDetailPage() {
 
   if (error || !station) {
     return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
-        <header className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-white/20 dark:border-gray-700/30 px-4 py-4 flex items-center gap-3">
-          <button onClick={() => router.back()} className="text-gray-600 dark:text-gray-400">
+      <div className="min-h-screen bg-[#0c0c0f]">
+        <header className="bg-[#0c0c0f]/95 backdrop-blur-sm border-b border-[#2a2a34] px-4 py-4 flex items-center gap-3">
+          <button onClick={() => router.back()} className="text-[#555566]">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
             </svg>
           </button>
-          <h1 className="text-lg font-semibold text-gray-900 dark:text-white">Fehler</h1>
+          <h1 className="text-lg font-bold text-white">Fehler</h1>
         </header>
         <div className="flex flex-col items-center justify-center py-20 px-4">
-          <p className="text-gray-600 dark:text-gray-400 mb-4">{error || 'Tankstelle nicht gefunden.'}</p>
+          <p className="text-[#8888a0] mb-4">{error || 'Tankstelle nicht gefunden.'}</p>
           <Button variant="primary" onClick={() => router.back()}>
-            Zur&uuml;ck
+            Zurück
           </Button>
         </div>
       </div>
@@ -80,9 +80,9 @@ export default function StationDetailPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
-      <header className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-white/20 dark:border-gray-700/30 px-4 py-4 flex items-center gap-3">
-        <button onClick={() => router.back()} className="text-gray-600 dark:text-gray-400">
+    <div className="min-h-screen bg-[#0c0c0f]">
+      <header className="bg-[#0c0c0f]/95 backdrop-blur-sm border-b border-[#2a2a34] px-4 py-4 flex items-center gap-3">
+        <button onClick={() => router.back()} className="text-[#555566] hover:text-[#00e5a0] transition-colors">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
             <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
           </svg>
@@ -90,8 +90,8 @@ export default function StationDetailPage() {
         <div className="min-w-0 flex-1 flex items-center gap-3">
           <BrandIcon brand={station.brand} size={40} />
           <div className="min-w-0">
-            <h1 className="text-lg font-semibold text-gray-900 dark:text-white truncate">{station.brand}</h1>
-            <p className="text-sm text-gray-500 dark:text-gray-400 truncate">{station.name}</p>
+            <h1 className="text-lg font-bold text-white truncate">{station.brand}</h1>
+            <p className="text-sm text-[#555566] truncate">{station.name}</p>
           </div>
         </div>
         <div className="flex items-center gap-2">
@@ -112,7 +112,7 @@ export default function StationDetailPage() {
         />
       </div>
 
-      <main className="px-4 py-4 max-w-lg mx-auto space-y-4">
+      <main className="px-4 py-4 max-w-lg mx-auto space-y-4 pb-24">
         <div className="grid grid-cols-3 gap-3">
           {fuelTypes.map(({ key, type }) => (
             <Card key={key} className="flex flex-col items-center justify-center py-4">
@@ -126,26 +126,24 @@ export default function StationDetailPage() {
 
         {station.openingTimes && station.openingTimes.length > 0 && (
           <Card>
-            <h2 className="font-semibold text-gray-900 dark:text-white mb-3">{t('station.openingHours')}</h2>
+            <h2 className="font-bold text-white mb-3">{t('station.openingHours')}</h2>
             <ul className="space-y-2">
               {station.openingTimes.map((time, i) => (
                 <li key={i} className="flex justify-between text-sm">
-                  <span className="text-gray-600 dark:text-gray-400">{time.text}</span>
-                  <span className="text-gray-900 dark:text-white font-medium">
-                    {time.start} - {time.end}
-                  </span>
+                  <span className="text-[#8888a0]">{time.text}</span>
+                  <span className="text-white font-medium">{time.start} - {time.end}</span>
                 </li>
               ))}
             </ul>
             {station.wholeDay && (
-              <p className="text-sm text-emerald-600 dark:text-emerald-400 mt-2 font-medium">{t('station.allDay')}</p>
+              <p className="text-sm text-[#00e5a0] mt-2 font-medium">{t('station.allDay')}</p>
             )}
           </Card>
         )}
 
         <Card>
-          <h2 className="font-semibold text-gray-900 dark:text-white mb-2">{t('station.address')}</h2>
-          <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+          <h2 className="font-bold text-white mb-2">{t('station.address')}</h2>
+          <p className="text-sm text-[#8888a0] mb-3">
             {station.street} {station.houseNumber}
             <br />
             {station.postCode} {station.place}
@@ -162,7 +160,7 @@ export default function StationDetailPage() {
         </Card>
 
         <Card>
-          <h2 className="font-semibold text-gray-900 dark:text-white mb-3">Preisverlauf</h2>
+          <h2 className="font-bold text-white mb-3">Preisverlauf</h2>
           <PriceHistoryChart stationId={id} />
         </Card>
 
@@ -171,11 +169,11 @@ export default function StationDetailPage() {
         </Card>
 
         <Card>
-          <h2 className="font-semibold text-gray-900 dark:text-white mb-3">Persönliche Notizen</h2>
+          <h2 className="font-bold text-white mb-3">Persönliche Notizen</h2>
           <StationNotes stationId={id} />
         </Card>
 
-        <p className="text-xs text-gray-400 dark:text-gray-500 text-center pb-4">
+        <p className="text-xs text-[#3a3a48] text-center pb-4">
           Preisdaten: CC BY 4.0 - tankerkoenig.de
         </p>
       </main>

@@ -37,14 +37,14 @@ export function FilterBar({ stations, onFilter }: FilterBarProps) {
     <div className="space-y-2">
       <button
         onClick={() => setExpanded(!expanded)}
-        className="flex items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-400 transition-colors"
+        className="flex items-center gap-2 text-sm font-bold text-[#555566] transition-colors"
       >
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
         </svg>
         <span>Filter</span>
         {activeCount > 0 && (
-          <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-blue-600 text-white text-xs font-bold">
+          <span className="inline-flex items-center justify-center w-5 h-5 rounded-md bg-[#00e5a0] text-[#0c0c0f] text-xs font-bold">
             {activeCount}
           </span>
         )}

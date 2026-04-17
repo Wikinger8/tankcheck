@@ -29,7 +29,7 @@ export function StationNotes({ stationId }: StationNotesProps) {
             className="transition-transform duration-200 hover:scale-110"
           >
             <svg
-              className={`w-7 h-7 ${star <= rating ? 'text-amber-400 fill-amber-400' : 'text-gray-300 dark:text-gray-600'}`}
+              className={`w-7 h-7 ${star <= rating ? 'text-[#fbbf24] fill-[#fbbf24]' : 'text-[#2a2a34]'}`}
               viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"
               fill={star <= rating ? 'currentColor' : 'none'}
             >
@@ -43,16 +43,16 @@ export function StationNotes({ stationId }: StationNotesProps) {
         onChange={(e) => setNote(e.target.value.slice(0, 500))}
         placeholder="Persönliche Notiz zur Tankstelle..."
         rows={3}
-        className="w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 text-sm text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500/50 focus:outline-none resize-none"
+        className="w-full bg-[#1c1c22] border border-[#2a2a34] rounded-lg px-4 py-3 text-sm text-white placeholder:text-[#555566] focus:ring-2 focus:ring-[#00e5a0]/20 focus:border-[#00e5a0] focus:outline-none resize-none"
       />
       <div className="flex items-center justify-between">
-        <span className="text-xs text-gray-400">{note.length}/500</span>
+        <span className="text-xs text-[#555566]">{note.length}/500</span>
         <button
           onClick={handleSave}
-          className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
+          className={`px-4 py-2 rounded-lg text-sm font-bold transition-all ${
             saved
-              ? 'bg-emerald-500 text-white'
-              : 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg hover:shadow-xl'
+              ? 'bg-[#00e5a0] text-[#0c0c0f]'
+              : 'bg-[#00e5a0] text-[#0c0c0f] hover:bg-[#00cc8e]'
           }`}
         >
           {saved ? 'Gespeichert!' : 'Speichern'}
