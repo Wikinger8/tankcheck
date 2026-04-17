@@ -15,17 +15,17 @@ export default function AlertCard({ alert, currentPrice, onDelete }: AlertCardPr
   const hasPrice = currentPrice !== undefined && currentPrice !== false;
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+    <div className="rounded-2xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border border-white/20 dark:border-gray-700/30 shadow-lg shadow-black/5 dark:shadow-black/20 p-4 transition-all duration-300">
       <div className="flex items-start justify-between">
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1">
-            <p className="font-bold text-gray-900 truncate">{alert.stationBrand}</p>
-            <span className="inline-flex items-center rounded-full bg-blue-50 px-2 py-0.5 text-xs font-medium text-blue-700">
+            <p className="font-bold text-gray-900 dark:text-white truncate">{alert.stationBrand}</p>
+            <span className="inline-flex items-center rounded-full bg-blue-50 dark:bg-blue-900/30 px-2 py-0.5 text-xs font-medium text-blue-700 dark:text-blue-300">
               {FUEL_TYPE_LABELS[alert.fuelType]}
             </span>
           </div>
-          <p className="text-sm text-gray-600 truncate">{alert.stationName}</p>
-          <p className="text-sm text-gray-500 mt-1">
+          <p className="text-sm text-gray-600 dark:text-gray-400 truncate">{alert.stationName}</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
             Alarm bei unter {alert.threshold.toFixed(3)} &euro;
           </p>
 
@@ -42,7 +42,7 @@ export default function AlertCard({ alert, currentPrice, onDelete }: AlertCardPr
               )}
               <span
                 className={`text-sm font-medium ${
-                  isBelowThreshold ? 'text-green-600' : 'text-red-600'
+                  isBelowThreshold ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'
                 }`}
               >
                 Aktuell: {(currentPrice as number).toFixed(3)} &euro;
@@ -53,8 +53,8 @@ export default function AlertCard({ alert, currentPrice, onDelete }: AlertCardPr
 
         <button
           onClick={() => onDelete(alert.id)}
-          className="flex-shrink-0 p-2 text-gray-400 hover:text-red-500 transition-colors"
-          aria-label="Alarm löschen"
+          className="flex-shrink-0 p-2 text-gray-400 dark:text-gray-500 hover:text-red-500 dark:hover:text-red-400 transition-colors"
+          aria-label="Alarm l&ouml;schen"
         >
           <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path

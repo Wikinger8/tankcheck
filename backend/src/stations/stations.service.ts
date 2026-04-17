@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@nestjs/common';
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import { Cache } from 'cache-manager';
 import { TankerkoenigService } from '../tankerkoenig/tankerkoenig.service';
-import { FuelType, SortOption, Station, StationDetail } from '@tankcheck/shared';
+import { FuelType, SortOption, Station, StationDetail } from '../../../packages/shared/src';
 
 /**
  * Orchestriert Tankstellen-Abfragen mit Redis-Caching.

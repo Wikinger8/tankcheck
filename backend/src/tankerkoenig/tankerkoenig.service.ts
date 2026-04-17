@@ -8,7 +8,7 @@ import {
   TKPricesResponse,
   FuelType,
   SortOption,
-} from '@tankcheck/shared';
+} from '../../../packages/shared/src';
 
 /**
  * HTTP-Client fuer die Tankerkoenig API (https://creativecommons.tankerkoenig.de).

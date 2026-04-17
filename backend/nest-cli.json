@@ -1,3 +1,6 @@
 {
-  "compilerOptions": { "deleteOutDir": true }
+  "compilerOptions": {
+    "deleteOutDir": true
+  },
+  "entryFile": "backend/src/main"
 }

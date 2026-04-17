@@ -4,6 +4,7 @@ import { useState, useMemo } from 'react';
 import { useAlerts } from '@/hooks/useAlerts';
 import { useFavorites } from '@/hooks/useFavorites';
 import { usePrices } from '@/hooks/usePrices';
+import { useLanguage } from '@/contexts/LanguageContext';
 import AlertCard from '@/components/alerts/AlertCard';
 import AlertForm from '@/components/alerts/AlertForm';
 import type { FuelType } from '@tankcheck/shared';
@@ -11,6 +12,7 @@ import type { FuelType } from '@tankcheck/shared';
 export default function AlertsPage() {
   const { alerts, addAlert, removeAlert } = useAlerts();
   const { favorites } = useFavorites();
+  const { t } = useLanguage();
   const stationIds = useMemo(
     () => [...new Set(alerts.map((a) => a.stationId))],
     [alerts]
@@ -41,31 +43,30 @@ export default function AlertsPage() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-50 pb-24">
+    <main className="min-h-screen bg-gray-50 dark:bg-gray-950 pb-24">
       <div className="mx-auto max-w-lg px-4 pt-6">
         <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-bold text-gray-900">Preisalarme</h1>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{t('alerts.title')}</h1>
           {favorites.length > 0 && (
             <button
               onClick={handleOpenForm}
               className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 transition-colors"
             >
-              Neuer Alarm
+              {t('alerts.new')}
             </button>
           )}
         </div>
 
-        {/* Station picker for alert creation */}
         {showForm && favorites.length > 0 && (
           <div className="mb-4">
-            <label htmlFor="station-picker" className="block text-sm font-medium text-gray-700 mb-1">
-              Tankstelle auswählen
+            <label htmlFor="station-picker" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              Tankstelle ausw&auml;hlen
             </label>
             <select
               id="station-picker"
               value={selectedStationId}
               onChange={(e) => setSelectedStationId(e.target.value)}
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
+              className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
             >
               {favorites.map((fav) => (
                 <option key={fav.stationId} value={fav.stationId}>
@@ -76,7 +77,6 @@ export default function AlertsPage() {
           </div>
         )}
 
-        {/* Alert cards */}
         {alerts.length > 0 && (
           <div className="space-y-3">
             {alerts.map((alert) => {
@@ -98,11 +98,10 @@ export default function AlertsPage() {
           </div>
         )}
 
-        {/* Empty state */}
         {alerts.length === 0 && (
           <div className="flex flex-col items-center justify-center py-16 text-center">
             <svg
-              className="h-16 w-16 text-gray-300 mb-4"
+              className="h-16 w-16 text-gray-300 dark:text-gray-600 mb-4"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -114,22 +113,20 @@ export default function AlertsPage() {
                 d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
               />
             </svg>
-            <h2 className="text-lg font-semibold text-gray-700 mb-2">
-              Noch keine Preisalarme
+            <h2 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2">
+              {t('alerts.empty')}
             </h2>
-            <p className="text-sm text-gray-500 max-w-xs">
-              Erstellen Sie einen Alarm, um benachrichtigt zu werden, wenn Kraftstoffpreise
-              unter Ihren Wunschpreis fallen.
+            <p className="text-sm text-gray-500 dark:text-gray-400 max-w-xs">
+              {t('alerts.emptyDesc')}
             </p>
             {favorites.length === 0 && (
-              <p className="text-xs text-gray-400 mt-3 max-w-xs">
-                Fügen Sie zuerst Tankstellen zu Ihren Favoriten hinzu, um Alarme erstellen zu können.
+              <p className="text-xs text-gray-400 dark:text-gray-500 mt-3 max-w-xs">
+                F&uuml;gen Sie zuerst Tankstellen zu Ihren Favoriten hinzu, um Alarme erstellen zu k&ouml;nnen.
               </p>
             )}
           </div>
         )}
 
-        {/* Alert Form Modal */}
         {selectedStation && (
           <AlertForm
             stationId={selectedStation.stationId}

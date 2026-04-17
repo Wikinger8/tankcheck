@@ -2,7 +2,7 @@ import { Injectable, Inject, HttpException, HttpStatus } from '@nestjs/common';
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import { Cache } from 'cache-manager';
 import { TankerkoenigService } from '../tankerkoenig/tankerkoenig.service';
-import { StationPrices } from '@tankcheck/shared';
+import { StationPrices } from '../../../packages/shared/src';
 
 @Injectable()
 export class PricesService {

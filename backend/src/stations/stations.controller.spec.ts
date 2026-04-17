@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { StationsController } from './stations.controller';
 import { StationsService } from './stations.service';
-import { FuelType, SortOption, Station, StationDetail } from '@tankcheck/shared';
+import { FuelType, SortOption, Station, StationDetail } from '../../../packages/shared/src';
 
 describe('StationsController', () => {
   let controller: StationsController;

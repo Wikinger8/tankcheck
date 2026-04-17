@@ -1,6 +1,6 @@
 import { IsNumber, IsEnum, IsOptional, Min, Max } from 'class-validator';
 import { Type } from 'class-transformer';
-import { FuelType, SortOption } from '@tankcheck/shared';
+import { FuelType, SortOption } from '../../../../packages/shared/src';
 
 export class SearchStationsDto {
   @IsNumber()

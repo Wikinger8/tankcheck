@@ -14,7 +14,7 @@ const roundedClasses = {
 export function Skeleton({ width, height, rounded = 'md', className = '' }: SkeletonProps) {
   return (
     <div
-      className={`animate-pulse bg-gray-200 ${roundedClasses[rounded]} ${className}`}
+      className={`animate-pulse bg-gray-200 dark:bg-gray-700 ${roundedClasses[rounded]} ${className}`}
       style={{ width, height }}
     />
   );

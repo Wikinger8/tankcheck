@@ -16,7 +16,6 @@ export default function InstallPrompt() {
   const deferredPromptRef = useRef<BeforeInstallPromptEvent | null>(null);
 
   useEffect(() => {
-    // Check if dismissed recently
     const dismissedAt = getItem<string | null>(DISMISS_KEY, null);
     if (dismissedAt) {
       const dismissDate = new Date(dismissedAt).getTime();
@@ -56,7 +55,7 @@ export default function InstallPrompt() {
 
   return (
     <div className="fixed bottom-0 inset-x-0 z-50 p-4 pb-safe">
-      <div className="mx-auto max-w-lg rounded-xl bg-white shadow-lg border border-gray-200 p-4">
+      <div className="mx-auto max-w-lg rounded-2xl bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl border border-white/20 dark:border-gray-700/30 shadow-xl p-4">
         <div className="flex items-center gap-3">
           <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-blue-600 flex items-center justify-center">
             <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -68,10 +67,10 @@ export default function InstallPrompt() {
             </svg>
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-gray-900">
-              TankCheck zum Startbildschirm hinzufügen
+            <p className="text-sm font-medium text-gray-900 dark:text-white">
+              TankCheck zum Startbildschirm hinzuf&uuml;gen
             </p>
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-gray-500 dark:text-gray-400">
               Schneller Zugriff auf Tankpreise
             </p>
           </div>
@@ -79,7 +78,7 @@ export default function InstallPrompt() {
         <div className="flex gap-2 mt-3">
           <button
             onClick={handleDismiss}
-            className="flex-1 rounded-lg border border-gray-300 px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 transition-colors"
+            className="flex-1 rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
           >
             Nicht jetzt
           </button>

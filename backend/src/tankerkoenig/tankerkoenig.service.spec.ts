@@ -5,7 +5,7 @@ import { HttpException } from '@nestjs/common';
 import { of } from 'rxjs';
 import { AxiosResponse, AxiosHeaders } from 'axios';
 import { TankerkoenigService } from './tankerkoenig.service';
-import { FuelType, SortOption } from '@tankcheck/shared';
+import { FuelType, SortOption } from '../../../packages/shared/src';
 
 describe('TankerkoenigService', () => {
   let service: TankerkoenigService;

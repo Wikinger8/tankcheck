@@ -13,5 +13,11 @@
     { "src": "/icons/icon-512x512.png", "sizes": "512x512", "type": "image/png" },
     { "src": "/icons/icon-maskable-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ],
-  "categories": ["utilities"]
+  "categories": ["utilities"],
+  "shortcuts": [
+    { "name": "Karte", "url": "/", "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192" }] },
+    { "name": "Stationsliste", "url": "/list", "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192" }] },
+    { "name": "Favoriten", "url": "/favorites", "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192" }] },
+    { "name": "Kostenrechner", "url": "/tools/calculator", "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192" }] }
+  ]
 }

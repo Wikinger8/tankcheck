@@ -17,15 +17,14 @@ export function GeolocationConsent({
   return (
     <Modal isOpen={isOpen} onClose={() => {}} title="">
       <div className="flex flex-col items-center text-center">
-        {/* Location Icon */}
-        <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-4">
+        <div className="w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900/40 flex items-center justify-center mb-4">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-8 h-8 text-blue-600"
+            className="w-8 h-8 text-blue-600 dark:text-blue-400"
           >
             <path
               strokeLinecap="round"
@@ -40,12 +39,12 @@ export function GeolocationConsent({
           </svg>
         </div>
 
-        <h2 className="text-xl font-semibold text-gray-900 mb-2">
+        <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
           Standort freigeben
         </h2>
 
-        <p className="text-gray-600 text-sm mb-6">
-          TankCheck benötigt Ihren Standort, um Tankstellen in Ihrer Nähe zu
+        <p className="text-gray-600 dark:text-gray-400 text-sm mb-6">
+          TankCheck ben&ouml;tigt Ihren Standort, um Tankstellen in Ihrer N&auml;he zu
           finden. Ihre Standortdaten werden nur lokal verwendet und nicht
           gespeichert.
         </p>

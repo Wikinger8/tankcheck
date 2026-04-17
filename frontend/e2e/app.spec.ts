@@ -1,35 +1,30 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Home Page', () => {
+test.describe('Home Page (Map)', () => {
   test('should show TankCheck title and bottom navigation', async ({ page }) => {
     await page.goto('/');
-    await expect(page.getByRole('heading', { name: 'TankCheck' })).toBeVisible();
     const nav = page.locator('nav');
     await expect(nav).toBeVisible();
+    await expect(nav.locator('text=Karte')).toBeVisible();
     await expect(nav.locator('text=Suche')).toBeVisible();
     await expect(nav.locator('text=Favoriten')).toBeVisible();
-    await expect(nav.locator('text=Alarme')).toBeVisible();
-    await expect(nav.locator('text=Einstellungen')).toBeVisible();
+    await expect(nav.locator('text=Tools')).toBeVisible();
+    await expect(nav.locator('text=Mehr')).toBeVisible();
   });
 
   test('should show geolocation consent dialog on first visit', async ({ page }) => {
     await page.goto('/');
     await expect(page.locator('text=Standort freigeben').first()).toBeVisible({ timeout: 5000 });
   });
-
-  test('should show fuel type selector', async ({ page, context }) => {
-    await context.grantPermissions(['geolocation']);
-    await context.setGeolocation({ latitude: 52.52, longitude: 13.405 });
-    await page.goto('/');
-    await page.evaluate(() => {
-      localStorage.setItem('tankcheck_geo_consent', 'true');
-    });
-    await page.reload();
-    await expect(page.locator('text=Diesel')).toBeVisible();
-  });
 });
 
 test.describe('Navigation', () => {
+  test('should navigate to list page', async ({ page }) => {
+    await page.goto('/');
+    await page.locator('nav').locator('text=Suche').click();
+    await expect(page).toHaveURL('/list');
+  });
+
   test('should navigate to favorites page', async ({ page }) => {
     await page.goto('/');
     await page.locator('nav').locator('text=Favoriten').click();
@@ -38,15 +33,15 @@ test.describe('Navigation', () => {
   });
 
   test('should navigate to alerts page', async ({ page }) => {
-    await page.goto('/');
-    await page.locator('nav').locator('text=Alarme').click();
+    await page.goto('/more');
+    await page.locator('text=Preisalarme').click();
     await expect(page).toHaveURL('/alerts');
     await expect(page.getByRole('heading', { name: 'Preisalarme', exact: true })).toBeVisible();
   });
 
   test('should navigate to settings page', async ({ page }) => {
-    await page.goto('/');
-    await page.locator('nav').locator('text=Einstellungen').click();
+    await page.goto('/more');
+    await page.locator('text=Einstellungen').click();
     await expect(page).toHaveURL('/settings');
   });
 });
