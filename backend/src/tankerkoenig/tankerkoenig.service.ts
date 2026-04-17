@@ -10,6 +10,11 @@ import {
   SortOption,
 } from '@tankcheck/shared';
 
+/**
+ * HTTP-Client fuer die Tankerkoenig API (https://creativecommons.tankerkoenig.de).
+ * Kapselt alle API-Aufrufe und validiert die Antworten (ok-Flag).
+ * Der API-Key wird serverseitig injiziert und nie an den Client weitergegeben.
+ */
 @Injectable()
 export class TankerkoenigService {
   private readonly baseUrl = 'https://creativecommons.tankerkoenig.de/json/';
@@ -22,6 +27,7 @@ export class TankerkoenigService {
     this.apiKey = this.configService.get<string>('tankerkoenigApiKey', '');
   }
 
+  // Umkreissuche: liefert Tankstellen + Preise im angegebenen Radius (max 25km)
   async searchStations(
     lat: number,
     lng: number,
@@ -52,6 +58,7 @@ export class TankerkoenigService {
     return response.data;
   }
 
+  // Batch-Preisabfrage: max 10 Tankstellen-IDs gleichzeitig
   async getPrices(ids: string[]): Promise<TKPricesResponse> {
     const response = await firstValueFrom(
       this.httpService.get<TKPricesResponse>(`${this.baseUrl}prices.php`, {
@@ -72,6 +79,7 @@ export class TankerkoenigService {
     return response.data;
   }
 
+  // Detailabfrage: Oeffnungszeiten, Overrides, wholeDay - nur fuer Detailansicht
   async getStationDetail(id: string): Promise<TKDetailResponse> {
     const response = await firstValueFrom(
       this.httpService.get<TKDetailResponse>(`${this.baseUrl}detail.php`, {

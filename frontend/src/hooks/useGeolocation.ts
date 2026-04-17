@@ -16,6 +16,11 @@ interface UseGeolocationReturn {
   resetConsent: () => void;
 }
 
+/**
+ * DSGVO-konforme Geolocation: Fragt erst nach explizitem Consent,
+ * speichert Einwilligung in LocalStorage, bietet Reset-Funktion.
+ * maximumAge=5min verhindert ueberfluessige GPS-Abfragen.
+ */
 export function useGeolocation(): UseGeolocationReturn {
   const [latitude, setLatitude] = useState<number | null>(null);
   const [longitude, setLongitude] = useState<number | null>(null);

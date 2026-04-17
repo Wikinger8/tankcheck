@@ -4,7 +4,8 @@ import { MapContainer, TileLayer, Marker, Popup, CircleMarker } from 'react-leaf
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
-// Fix Leaflet default icon issue in Next.js
+// Leaflet default Icon Pfade sind in Next.js Bundling nicht verfuegbar,
+// daher explizit via CDN gesetzt
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl:

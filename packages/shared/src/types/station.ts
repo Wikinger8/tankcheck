@@ -1,3 +1,5 @@
+// Spiegelt das JSON-Format der Tankerkoenig list.php Antwort wider.
+// Preise sind `false` wenn die Tankstelle die Sorte nicht fuehrt.
 export interface Station {
   id: string;
   name: string;
@@ -15,6 +17,7 @@ export interface Station {
   isOpen: boolean;
 }
 
+// Erweiterte Infos aus detail.php - nur fuer Detailansicht abfragen
 export interface StationDetail extends Station {
   openingTimes: OpeningTime[];
   overrides: string[];
@@ -28,6 +31,7 @@ export interface OpeningTime {
   end: string;
 }
 
+// Antwort von prices.php - Batch-Abfrage fuer bis zu 10 Tankstellen
 export interface StationPrices {
   status: 'open' | 'closed' | 'no prices';
   e5: number | false;
@@ -35,6 +39,7 @@ export interface StationPrices {
   diesel: number | false;
 }
 
+// Lokal gespeicherter Favorit - Subset der Station-Daten fuer schnellen Zugriff
 export interface FavoriteStation {
   stationId: string;
   name: string;

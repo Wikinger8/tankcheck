@@ -1,3 +1,18 @@
+/**
+ * TankCheck Service Worker - Offline-Strategie:
+ *
+ * API-Aufrufe (/api/*): Network-first, Cache als Fallback
+ *   -> Zeigt letzte bekannte Preise auch offline an
+ *
+ * Seitennavigation: Network-first, offline.html als Fallback
+ *   -> Schon besuchte Seiten funktionieren offline
+ *
+ * Statische Assets (JS, CSS, Bilder, OSM-Tiles): Cache-first
+ *   -> Schnelles Laden, Netzwerk nur bei Cache-Miss
+ *
+ * Bei neuer Version: CACHE_NAME erhoehen -> alte Caches werden beim
+ * Activate-Event automatisch geloescht.
+ */
 const CACHE_NAME = 'tankcheck-v1';
 const STATIC_ASSETS = ['/', '/favorites', '/alerts', '/settings', '/offline.html'];
 

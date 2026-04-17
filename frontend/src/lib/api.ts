@@ -1,5 +1,9 @@
 import type { TKListResponse, TKDetailResponse, TKPricesResponse } from '@tankcheck/shared';
 
+/**
+ * Frontend API-Client: Alle Requests gehen an das NestJS-Backend (nicht direkt an Tankerkoenig).
+ * Das Backend kapselt den API-Key und cached Antworten in Redis.
+ */
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 
 async function fetchAPI<T>(path: string, params?: Record<string, string>): Promise<T> {

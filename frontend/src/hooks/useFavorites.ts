@@ -7,6 +7,11 @@ import { getItem, setItem } from '@/lib/storage';
 const STORAGE_KEY = 'tankcheck_favorites';
 const FAVORITES_CHANGED_EVENT = 'favorites-changed';
 
+/**
+ * Favoriten-System mit LocalStorage-Persistenz.
+ * Synchronisiert ueber Custom Events zwischen Komponenten,
+ * damit z.B. FavoriteButton und FavoritesList stets konsistent sind.
+ */
 export function useFavorites() {
   const [favorites, setFavorites] = useState<FavoriteStation[]>([]);
 

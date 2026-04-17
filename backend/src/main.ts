@@ -7,8 +7,10 @@ import { HttpExceptionFilter } from './common/filters/http-exception.filter';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  // Alle Endpoints unter /api/* erreichbar
   app.setGlobalPrefix('api');
 
+  // Query-Parameter automatisch in DTO-Typen transformieren
   app.useGlobalPipes(
     new ValidationPipe({
       transform: true,
