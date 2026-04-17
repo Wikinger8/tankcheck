@@ -29,29 +29,31 @@ export default function MorePage() {
   const { t } = useLanguage();
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
-      <header className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-white/20 dark:border-gray-700/30 px-4 py-4">
-        <h1 className="text-xl font-bold text-gray-900 dark:text-white">{t('more.title')}</h1>
-      </header>
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 pb-24">
+      <div className="mx-auto max-w-lg px-4 pt-6">
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{t('more.title')}</h1>
 
-      <main className="px-4 py-4 max-w-lg mx-auto space-y-3">
-        {links.map((link) => (
-          <Link key={link.href} href={link.href}>
-            <div className="flex items-center gap-3 rounded-2xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border border-white/20 dark:border-gray-700/30 shadow-lg shadow-black/5 dark:shadow-black/20 p-4 transition-all duration-300 hover:shadow-xl">
-              <div className="text-blue-600 dark:text-blue-400">{link.icon}</div>
-              <span className="flex-1 font-medium text-gray-900 dark:text-white">{t(link.key)}</span>
-              <svg className="w-5 h-5 text-gray-400 dark:text-gray-500" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-              </svg>
-            </div>
-          </Link>
-        ))}
-
-        <div className="rounded-2xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border border-white/20 dark:border-gray-700/30 shadow-lg shadow-black/5 dark:shadow-black/20 p-4">
-          <p className="text-sm text-gray-500 dark:text-gray-400">TankCheck v1.0.0</p>
-          <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">Preisdaten: tankerkoenig.de (CC BY 4.0)</p>
+        <div className="space-y-2">
+          {links.map((link) => (
+            <Link key={link.href} href={link.href}>
+              <div className="flex items-center gap-4 rounded-2xl bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 p-4 active:bg-gray-50 dark:active:bg-gray-800 transition-colors">
+                <div className="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950 flex items-center justify-center text-blue-600 dark:text-blue-400">
+                  {link.icon}
+                </div>
+                <span className="flex-1 font-semibold text-gray-900 dark:text-white">{t(link.key)}</span>
+                <svg className="w-5 h-5 text-gray-300 dark:text-gray-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>
+              </div>
+            </Link>
+          ))}
         </div>
-      </main>
+
+        <div className="mt-8 px-1">
+          <p className="text-sm text-gray-400 dark:text-gray-500">TankCheck v1.0.0</p>
+          <p className="text-xs text-gray-300 dark:text-gray-600 mt-1">Preisdaten: tankerkoenig.de (CC BY 4.0)</p>
+        </div>
+      </div>
     </div>
   );
 }

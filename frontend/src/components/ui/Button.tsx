@@ -11,15 +11,15 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variantClasses: Record<ButtonVariant, string> = {
-  primary: 'bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800',
-  secondary: 'bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600',
+  primary: 'bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800 shadow-sm shadow-blue-600/20',
+  secondary: 'bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600',
   ghost: 'bg-transparent text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 active:bg-gray-200 dark:active:bg-gray-700',
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
-  sm: 'px-3 py-1.5 text-sm rounded-lg',
-  md: 'px-4 py-2 text-base rounded-lg',
-  lg: 'px-6 py-3 text-lg rounded-xl',
+  sm: 'px-3.5 py-2 text-sm rounded-xl min-h-[36px]',
+  md: 'px-5 py-2.5 text-sm rounded-xl min-h-[44px]',
+  lg: 'px-6 py-3 text-base rounded-2xl min-h-[50px]',
 };
 
 export function Button({
@@ -32,8 +32,8 @@ export function Button({
 }: ButtonProps) {
   return (
     <button
-      className={`font-medium transition-colors ${variantClasses[variant]} ${sizeClasses[size]} ${
-        disabled ? 'opacity-50 cursor-not-allowed' : ''
+      className={`font-semibold transition-all duration-150 active:scale-[0.97] ${variantClasses[variant]} ${sizeClasses[size]} ${
+        disabled ? 'opacity-50 cursor-not-allowed pointer-events-none' : ''
       } ${className}`}
       disabled={disabled}
       {...props}
