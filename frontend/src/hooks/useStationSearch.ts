@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { FuelType, SortOption } from '@tankcheck/shared';
 import { api } from '@/lib/api';
 import type { Station } from '@tankcheck/shared';
@@ -27,7 +27,7 @@ export function useStationSearch({
   fuelType,
   sortBy,
 }: UseStationSearchParams): UseStationSearchReturn {
-  const [stations, setStations] = useState<Station[]>([]);
+  const [rawStations, setRawStations] = useState<Station[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -42,21 +42,34 @@ export function useStationSearch({
         lat: lat.toString(),
         lng: lng.toString(),
         rad: rad.toString(),
-        type: fuelType,
-        sort: sortBy,
+        type: 'all',
+        sort: 'dist',
       });
-      setStations(response.stations);
+      setRawStations(response.stations);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Ein Fehler ist aufgetreten.');
-      setStations([]);
+      setRawStations([]);
     } finally {
       setLoading(false);
     }
-  }, [lat, lng, rad, fuelType, sortBy]);
+  }, [lat, lng, rad]);
 
   useEffect(() => {
     fetchStations();
   }, [fetchStations]);
+
+  const stations = useMemo(() => {
+    if (sortBy !== SortOption.PRICE) return rawStations;
+    const fuelKey = fuelType === FuelType.ALL ? 'diesel' : (fuelType as 'e5' | 'e10' | 'diesel');
+    return [...rawStations].sort((a, b) => {
+      const pa = a[fuelKey];
+      const pb = b[fuelKey];
+      if (typeof pa !== 'number' && typeof pb !== 'number') return 0;
+      if (typeof pa !== 'number') return 1;
+      if (typeof pb !== 'number') return -1;
+      return pa - pb;
+    });
+  }, [rawStations, fuelType, sortBy]);
 
   return { stations, loading, error, refetch: fetchStations };
 }
