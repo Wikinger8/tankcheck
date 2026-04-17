@@ -18,55 +18,73 @@ interface MapOverviewProps {
 
 function getMarkerColor(price: number | false, min: number, max: number): string {
   if (typeof price !== 'number') return '#9ca3af';
-  if (max === min) return '#22c55e';
+  if (max === min) return '#16a34a';
   const ratio = (price - min) / (max - min);
-  if (ratio < 0.33) return '#22c55e';
-  if (ratio < 0.66) return '#eab308';
-  return '#ef4444';
-}
-
-function formatPrice(price: number | false): string {
-  if (typeof price !== 'number') return '—';
-  return price.toFixed(3) + '€';
+  if (ratio < 0.33) return '#16a34a';
+  if (ratio < 0.66) return '#d97706';
+  return '#dc2626';
 }
 
 function createPriceIcon(price: number | false, color: string, isCheapest: boolean, brand: string): L.DivIcon {
   const priceText = typeof price === 'number' ? price.toFixed(3) : '—';
-  const border = isCheapest ? '3px solid #10b981' : '2px solid white';
-  const shadow = isCheapest ? '0 0 12px rgba(16,185,129,0.6), 0 2px 8px rgba(0,0,0,0.3)' : '0 2px 8px rgba(0,0,0,0.3)';
-  const badge = isCheapest ? '<div style="position:absolute;top:-14px;right:-14px;background:linear-gradient(135deg,#10b981,#059669);color:white;font-size:8px;font-weight:700;padding:1px 4px;border-radius:6px;white-space:nowrap;box-shadow:0 1px 3px rgba(0,0,0,.3)">★ Günstigste</div>' : '';
-  const brandHtml = getBrandIconHtml(brand, 22);
+  const brandHtml = getBrandIconHtml(brand, 20);
+
+  if (isCheapest) {
+    return L.divIcon({
+      className: '',
+      iconSize: [96, 52],
+      iconAnchor: [48, 52],
+      popupAnchor: [0, -54],
+      html: `
+        <div style="display:flex;flex-direction:column;align-items:center">
+          <div style="position:relative">
+            <div style="
+              display:flex;align-items:center;gap:5px;
+              background:linear-gradient(135deg,#059669,#10b981);
+              color:white;
+              font-size:13px;
+              font-weight:800;
+              padding:5px 10px 5px 5px;
+              border-radius:14px;
+              border:2.5px solid white;
+              box-shadow:0 0 0 2px #059669, 0 4px 12px rgba(0,0,0,0.25);
+              white-space:nowrap;
+              transform:scale(1.1);
+            ">${brandHtml}<span>${priceText}€</span></div>
+            <div style="
+              position:absolute;top:-8px;right:-8px;
+              background:#fbbf24;color:#92400e;
+              font-size:9px;font-weight:800;
+              padding:1px 5px;border-radius:8px;
+              box-shadow:0 1px 3px rgba(0,0,0,.3);
+            ">TOP</div>
+          </div>
+          <div style="width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-top:7px solid #10b981;margin-top:-1px"></div>
+        </div>
+      `,
+    });
+  }
 
   return L.divIcon({
     className: '',
-    iconSize: [90, 40],
-    iconAnchor: [45, 40],
-    popupAnchor: [0, -42],
+    iconSize: [88, 44],
+    iconAnchor: [44, 44],
+    popupAnchor: [0, -46],
     html: `
-      <div style="position:relative;display:flex;flex-direction:column;align-items:center">
-        ${badge}
+      <div style="display:flex;flex-direction:column;align-items:center">
         <div style="
           display:flex;align-items:center;gap:4px;
           background:${color};
           color:white;
-          font-size:11px;
-          font-weight:700;
-          padding:3px 8px 3px 4px;
+          font-size:12px;
+          font-weight:800;
+          padding:4px 9px 4px 4px;
           border-radius:12px;
-          border:${border};
-          box-shadow:${shadow};
+          border:2px solid white;
+          box-shadow:0 2px 8px rgba(0,0,0,0.2);
           white-space:nowrap;
-          text-align:center;
-          letter-spacing:-0.3px;
-          ${isCheapest ? 'transform:scale(1.15);' : ''}
         ">${brandHtml}<span>${priceText}€</span></div>
-        <div style="
-          width:0;height:0;
-          border-left:6px solid transparent;
-          border-right:6px solid transparent;
-          border-top:6px solid ${color};
-          margin-top:-1px;
-        "></div>
+        <div style="width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:6px solid ${color};margin-top:-1px"></div>
       </div>
     `,
   });
@@ -77,7 +95,7 @@ function LocateButton({ lat, lng }: { lat: number; lng: number }) {
   return (
     <button
       onClick={() => map.flyTo([lat, lng], 13)}
-      className="absolute bottom-20 right-3 z-[1000] bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl rounded-xl p-3 shadow-lg border border-white/20 dark:border-gray-700/30 transition-all duration-300 hover:scale-105"
+      className="absolute bottom-24 right-3 z-[999] bg-white dark:bg-gray-900 rounded-xl p-3 shadow-lg border border-gray-200 dark:border-gray-700 transition-transform active:scale-95"
     >
       <svg className="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
@@ -123,7 +141,7 @@ export default function MapOverview({ stations, userLat, userLng, selectedFuel }
       <CircleMarker
         center={[userLat, userLng]}
         radius={8}
-        pathOptions={{ fillColor: '#2563eb', fillOpacity: 1, color: '#ffffff', weight: 3 }}
+        pathOptions={{ fillColor: '#3b82f6', fillOpacity: 1, color: '#ffffff', weight: 3 }}
       />
       {stations.map((station) => {
         const price = station[fuelKey];
@@ -139,48 +157,43 @@ export default function MapOverview({ stations, userLat, userLng, selectedFuel }
             zIndexOffset={isCheapest ? 1000 : 0}
           >
             <Popup>
-              <div className="min-w-[200px]">
-                <div className="flex items-center gap-2 mb-1">
-                  <div dangerouslySetInnerHTML={{ __html: getBrandIconHtml(station.brand, 28) }} />
+              <div className="min-w-[220px] p-1">
+                <div className="flex items-center gap-2 mb-2">
+                  <div dangerouslySetInnerHTML={{ __html: getBrandIconHtml(station.brand, 32) }} />
                   <div className="min-w-0">
-                    <p className="font-bold text-sm">{station.brand}</p>
-                    {isCheapest && (
-                      <span style={{ background: 'linear-gradient(135deg,#10b981,#059669)', color: 'white', fontSize: '9px', fontWeight: 700, padding: '1px 6px', borderRadius: '8px' }}>
-                        Günstigste
-                      </span>
-                    )}
+                    <p className="font-bold text-sm text-gray-900">{station.brand}</p>
+                    <p className="text-[11px] text-gray-500 truncate">{station.street} {station.houseNumber}, {station.place}</p>
                   </div>
                 </div>
-                <p className="text-xs text-gray-500">{station.name}</p>
-                <p className="text-xs text-gray-400 mb-2">{station.street} {station.houseNumber}, {station.postCode} {station.place}</p>
-                <div className="grid grid-cols-3 gap-1 mb-2">
+                <div className="grid grid-cols-3 gap-1.5 mb-2">
                   {typeof station.e5 === 'number' && (
-                    <div className="text-center bg-blue-50 rounded-lg py-1 px-1">
-                      <div className="text-[10px] text-blue-600 font-medium">E5</div>
-                      <div className="text-xs font-bold text-blue-800">{station.e5.toFixed(3)}€</div>
+                    <div className="text-center bg-blue-50 rounded-lg py-1.5">
+                      <div className="text-[9px] font-bold text-blue-500 uppercase">E5</div>
+                      <div className="text-sm font-extrabold text-blue-700">{station.e5.toFixed(3)}€</div>
                     </div>
                   )}
                   {typeof station.e10 === 'number' && (
-                    <div className="text-center bg-green-50 rounded-lg py-1 px-1">
-                      <div className="text-[10px] text-green-600 font-medium">E10</div>
-                      <div className="text-xs font-bold text-green-800">{station.e10.toFixed(3)}€</div>
+                    <div className="text-center bg-emerald-50 rounded-lg py-1.5">
+                      <div className="text-[9px] font-bold text-emerald-500 uppercase">E10</div>
+                      <div className="text-sm font-extrabold text-emerald-700">{station.e10.toFixed(3)}€</div>
                     </div>
                   )}
                   {typeof station.diesel === 'number' && (
-                    <div className="text-center bg-amber-50 rounded-lg py-1 px-1">
-                      <div className="text-[10px] text-amber-600 font-medium">Diesel</div>
-                      <div className="text-xs font-bold text-amber-800">{station.diesel.toFixed(3)}€</div>
+                    <div className="text-center bg-amber-50 rounded-lg py-1.5">
+                      <div className="text-[9px] font-bold text-amber-500 uppercase">Diesel</div>
+                      <div className="text-sm font-extrabold text-amber-700">{station.diesel.toFixed(3)}€</div>
                     </div>
                   )}
                 </div>
-                <div className="flex items-center justify-between">
-                  <span className={`text-xs px-2 py-0.5 rounded-full ${station.isOpen ? 'bg-emerald-100 text-emerald-700' : 'bg-red-100 text-red-700'}`}>
-                    {station.isOpen ? 'Geöffnet' : 'Geschlossen'}
-                  </span>
+                <div className="flex items-center justify-between pt-1 border-t border-gray-100">
+                  <div className="flex items-center gap-1.5">
+                    <span className={`w-2 h-2 rounded-full ${station.isOpen ? 'bg-emerald-500' : 'bg-red-500'}`} />
+                    <span className="text-[11px] text-gray-500">{station.isOpen ? 'Offen' : 'Zu'}</span>
+                  </div>
                   {typeof station.dist === 'number' && (
-                    <span className="text-xs text-gray-400">{station.dist.toFixed(1)} km</span>
+                    <span className="text-[11px] text-gray-400">{station.dist.toFixed(1)} km</span>
                   )}
-                  <Link href={`/station/${station.id}`} className="text-xs text-blue-600 font-semibold">
+                  <Link href={`/station/${station.id}`} className="text-[11px] text-blue-600 font-bold">
                     Details →
                   </Link>
                 </div>

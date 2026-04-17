@@ -16,21 +16,29 @@ html.dark {
 
 body {
   -webkit-tap-highlight-color: transparent;
-  background-color: #f8fafc;
+  background-color: #f9fafb;
 }
 
 html.dark body {
   background-color: #0a0a0f;
 }
 
-@layer utilities {
-  .glass {
-    @apply bg-white/80 backdrop-blur-xl border border-white/20 shadow-lg;
-  }
-  .glass-dark {
-    @apply dark:bg-gray-900/80 dark:border-gray-700/30 dark:shadow-black/20;
-  }
-  .text-gradient {
-    @apply bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent;
-  }
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 16px !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12) !important;
+  border: 1px solid rgba(0,0,0,0.06) !important;
+  padding: 0 !important;
+}
+
+.leaflet-popup-content {
+  margin: 12px 14px !important;
+}
+
+.leaflet-popup-tip {
+  box-shadow: none !important;
 }
