@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <circle cx="256" cy="256" r="256" fill="#2563eb"/>
+  <g transform="translate(128, 80) scale(1.0)" fill="white">
+    <!-- Fuel pump body -->
+    <rect x="20" y="60" width="140" height="200" rx="12" fill="white"/>
+    <!-- Pump screen -->
+    <rect x="40" y="80" width="100" height="60" rx="6" fill="#1d4ed8"/>
+    <!-- Nozzle holder -->
+    <rect x="160" y="80" width="30" height="8" rx="4" fill="white"/>
+    <!-- Hose -->
+    <path d="M190 84 Q220 84 220 114 L220 180 Q220 200 200 200 L180 200"
+          fill="none" stroke="white" stroke-width="10" stroke-linecap="round"/>
+    <!-- Nozzle -->
+    <rect x="165" y="190" width="20" height="40" rx="4" fill="white"/>
+    <rect x="160" y="225" width="30" height="12" rx="3" fill="white"/>
+    <!-- Base -->
+    <rect x="10" y="260" width="160" height="20" rx="6" fill="white"/>
+    <!-- Euro symbol on screen -->
+    <text x="90" y="122" text-anchor="middle" fill="white" font-size="36" font-weight="bold" font-family="Arial, sans-serif">&euro;</text>
+  </g>
+</svg>

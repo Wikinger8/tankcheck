@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { BottomNav } from '@/components/layout/BottomNav';
+import AlertChecker from '@/components/alerts/AlertChecker';
+import InstallPrompt from '@/components/pwa/InstallPrompt';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -38,6 +40,8 @@ export default function RootLayout({
       <body className={`${inter.className} pb-20`}>
         {children}
         <BottomNav />
+        <AlertChecker />
+        <InstallPrompt />
       </body>
     </html>
   );

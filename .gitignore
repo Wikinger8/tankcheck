@@ -40,3 +40,4 @@ docker/redis/data/
 # Misc
 *.tgz
 .eslintcache
+.claude/
